@@ -1,0 +1,41 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.buttons > div {
+    margin: 10px;
+}
+
+.container2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container2 > div {
+    margin: auto;
+    margin-top: 15px;
+}
+
+.container2 > div > label{
+    margin-right: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+.atributi{
+
+    width: 40px;
+
+}
