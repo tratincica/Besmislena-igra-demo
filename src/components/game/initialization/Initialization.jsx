@@ -45,20 +45,92 @@ const Custom = (props) => {
     props.setOn();
   };
 
-  const [checked, setChecked] = useState(false);
   const [radioValue, setRadioValue] = useState("1");
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredInt, setInt] = useState(1);
+  const [enteredMot, setMot] = useState(1);
+  const [enteredPsi, setPsi] = useState(1);
+  const [enteredFiz, setFiz] = useState(1);
+
+  let maxBodova = 12 - enteredInt - enteredMot - enteredPsi - enteredFiz;
+
+  let error = `Maksimalno može biti 6 bodova, i trenutno na raspolaganju imate ${maxBodova} bodova za podijeliti!`;
+
+  const nameChangeHandler = (e) => {
+    setEnteredName(e.target.value);
+  };
+
+  const intChangeHandler = (event) => {
+    if (maxBodova > 0 && event.target.value <= 6) {
+      setInt(event.target.value);
+    } else {
+      alert(error);
+    }
+  };
+
+  const motChangeHandler = (event) => {
+    if (maxBodova > 0 && event.target.value <= 6) {
+      setMot(event.target.value);
+    } else {
+      alert(error);
+    }
+  };
+
+  const psiChangeHandler = (event) => {
+    if (maxBodova > 0 && event.target.value <= 6) {
+      setPsi(event.target.value);
+    } else {
+      alert(error);
+    }
+  };
+
+  const fizChangeHandler = (event) => {
+    if (maxBodova > 0 && event.target.value <= 6) {
+      setFiz(event.target.value);
+    } else {
+      alert(error);
+    }
+  };
 
   const radios = [
     { name: "Muško", value: "1" },
     { name: "Žensko", value: "2" },
   ];
 
+  const addCharacter = (e) => {
+    e.preventDefault();
+    if (maxBodova > 0) {
+      alert(`Imaš još ${maxBodova} na raspolaganju!`);
+    }
+    if (enteredName.trim() == 0) {
+      alert("Unesi ime!");
+    } else {
+      setEnteredName("");
+      setFiz(1);
+      setInt(1);
+      setMot(1);
+      setPsi(1);
+      setRadioValue("1");
+      console.log("Sve OK!");
+    }
+  };
+
   return (
     <div>
       <div>
         <h2>Custom Lik</h2>
       </div>
-      <form action="" className={classes.container2}>
+      <form onSubmit={addCharacter} className={classes.container2}>
+        <div>
+          <label htmlFor="name">Ime:</label>
+          <input
+            type="text"
+            id="name"
+            value={enteredName}
+            onChange={nameChangeHandler}
+            placeholder="Your name..."
+          />
+        </div>
         <div>
           <ButtonGroup>
             {radios.map((radio, idx) => (
@@ -78,26 +150,56 @@ const Custom = (props) => {
           </ButtonGroup>
         </div>
         <div>
-          <label htmlFor="name">Unesi ime lika.</label>
-          <input type="text" id="name" />
-        </div>
-        <div>
           <label htmlFor="psi">Psiha:</label>
-          <input className={classes.atributi} type="number" id="psi" min={1} />
+          <input
+            className={classes.atributi}
+            type="number"
+            id="psi"
+            value={enteredPsi}
+            onChange={psiChangeHandler}
+            min={1}
+            max={6}
+          />
         </div>
         <div>
           <label htmlFor="int">Intelekt:</label>
-          <input className={classes.atributi} type="number" id="int" min={1} />
+          <input
+            className={classes.atributi}
+            type="number"
+            value={enteredInt}
+            onChange={intChangeHandler}
+            id="int"
+            min={1}
+            max={6}
+          />
         </div>
         <div>
           <label htmlFor="mot">Motorika:</label>
-          <input className={classes.atributi} type="number" id="mot" min={1} />
+          <input
+            className={classes.atributi}
+            type="number"
+            value={enteredMot}
+            onChange={motChangeHandler}
+            id="mot"
+            min={1}
+            max={6}
+          />
         </div>
         <div>
           <label htmlFor="fiz">Fizikalnost:</label>
-          <input className={classes.atributi} type="number" id="fiz" min={1} />
+          <input
+            className={classes.atributi}
+            type="number"
+            value={enteredFiz}
+            onChange={fizChangeHandler}
+            id="fiz"
+            min={1}
+            max={6}
+          />
         </div>
-
+        <div>
+          <p>Bodova na raspolaganju: {maxBodova}</p>
+        </div>
         <div className={classes.buttons}>
           <div>
             <Button variant="danger" onClick={customHandler}>
