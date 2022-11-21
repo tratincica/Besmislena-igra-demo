@@ -71,6 +71,10 @@ const Custom = (props) => {
     setEnteredName(e.target.value);
   };
 
+  const preventKeyboardInput = (event) => {
+    event.preventDefault();
+  }
+
   const intChangeHandler = (event) => {
     if (maxBodova > 0 && event.target.value <= 6) {
       setInt(event.target.value);
@@ -203,6 +207,7 @@ const Custom = (props) => {
             onChange={psiChangeHandler}
             min={1}
             max={6}
+            onKeyDown={preventKeyboardInput}
           />
         </div>
         <div>
@@ -215,6 +220,7 @@ const Custom = (props) => {
             id="int"
             min={1}
             max={6}
+            onKeyDown={preventKeyboardInput}
           />
         </div>
         <div>
@@ -227,6 +233,7 @@ const Custom = (props) => {
             id="mot"
             min={1}
             max={6}
+            onKeyDown={preventKeyboardInput}
           />
         </div>
         <div>
@@ -239,6 +246,7 @@ const Custom = (props) => {
             id="fiz"
             min={1}
             max={6}
+            onKeyDown={preventKeyboardInput}
           />
         </div>
         <div>
