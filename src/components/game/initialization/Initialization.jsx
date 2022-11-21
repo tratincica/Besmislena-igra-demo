@@ -10,6 +10,17 @@ const Welcome = (props) => {
     props.setOn();
   };
 
+  const jureHandler = () => {
+    props.stvoriLika(
+      'Lino',
+      3,
+      4,
+      3,
+      2
+    );
+    props.start();
+  }
+
   return (
     <div className={classes.container}>
       <div>
@@ -20,7 +31,7 @@ const Welcome = (props) => {
       </div>
       <div className={classes.buttons}>
         <div>
-          <Button variant="primary" disabled>
+          <Button variant="primary" onClick={jureHandler}>
             Lino
           </Button>
         </div>
@@ -63,6 +74,11 @@ const Custom = (props) => {
   const intChangeHandler = (event) => {
     if (maxBodova > 0 && event.target.value <= 6) {
       setInt(event.target.value);
+    } else if (
+      maxBodova == 0 &&
+      maxBodova + event.target.value - enteredInt < 0
+    ) {
+      setInt(event.target.value);
     } else {
       alert(error);
     }
@@ -70,6 +86,11 @@ const Custom = (props) => {
 
   const motChangeHandler = (event) => {
     if (maxBodova > 0 && event.target.value <= 6) {
+      setMot(event.target.value);
+    } else if (
+      maxBodova == 0 &&
+      maxBodova + event.target.value - enteredMot < 0
+    ) {
       setMot(event.target.value);
     } else {
       alert(error);
@@ -79,6 +100,11 @@ const Custom = (props) => {
   const psiChangeHandler = (event) => {
     if (maxBodova > 0 && event.target.value <= 6) {
       setPsi(event.target.value);
+    } else if (
+      maxBodova == 0 &&
+      maxBodova + event.target.value - enteredPsi < 0
+    ) {
+      setPsi(event.target.value);
     } else {
       alert(error);
     }
@@ -86,6 +112,11 @@ const Custom = (props) => {
 
   const fizChangeHandler = (event) => {
     if (maxBodova > 0 && event.target.value <= 6) {
+      setFiz(event.target.value);
+    } else if (
+      maxBodova == 0 &&
+      +maxBodova + event.target.value - enteredFiz < 0
+    ) {
       setFiz(event.target.value);
     } else {
       alert(error);
@@ -105,19 +136,20 @@ const Custom = (props) => {
     if (enteredName.trim() == 0) {
       alert("Unesi ime!");
     } else {
-      setEnteredName("");
-      setFiz(1);
-      setInt(1);
-      setMot(1);
-      setPsi(1);
-      setRadioValue("1");
-      console.log("Sve OK!");
+      props.stvoriLika(
+        enteredName,
+        enteredFiz,
+        enteredInt,
+        enteredMot,
+        enteredPsi
+      );
+      props.start();
     }
   };
 
   return (
-    <div>
-      <div>
+    <div >
+      <div className={classes.custom}>
         <h2>Custom Lik</h2>
       </div>
       <form onSubmit={addCharacter} className={classes.container2}>
@@ -224,10 +256,25 @@ const Initialization = (props) => {
     setIsWelcomeOn(!isWelcomeOn);
   };
 
+  const createCharacter = (Name, Fiz, Int, Mot, Psi) => {
+    const lik = {
+      name: Name,
+      int: Int,
+      mot: Mot,
+      psi: Psi,
+      fiz: Fiz,
+    };
+    props.stvoriLika(lik);
+  };
+
   const toggleRender = isWelcomeOn ? (
-    <Welcome setOn={customHandler} />
+    <Welcome setOn={customHandler} stvoriLika={createCharacter} start={props.show} />
   ) : (
-    <Custom setOn={customHandler} />
+    <Custom
+      setOn={customHandler}
+      start={props.show}
+      stvoriLika={createCharacter}
+    />
   );
 
   return <>{toggleRender}</>;
