@@ -1,22 +1,21 @@
-import { useContext } from "react";
-import CharacterContext from "../../store/charactere-context";
+import GameFooter from "../game_layout/GaameFooter";
+import GameHeader from "../game_layout/GameHeader";
+import classes from "./Game.module.css";
 
-const Game = props => {
-
-    const character = useContext(CharacterContext);
-    return(
-        <>
-            <h1>Igra!</h1>
-            <h2>Vaš lik</h2>
-            <p>Ime: {character.name}</p>
-            <p>Inteligencija: {character.int} </p>
-            <p>Motorika: {character.mot}</p>
-            <p>Psiha: {character.psi} </p>
-            <p>Fizikalnost: {character.fiz} </p>
-            
-        </>
-    );
-
-}
+const Game = (props) => {
+  return (
+    <div>
+      <div>
+        <GameHeader />
+      </div>
+      <div>
+        <h1>Igra!</h1>
+      </div>
+      <div>
+        <GameFooter />
+      </div>
+    </div>
+  );
+};
 
 export default Game;

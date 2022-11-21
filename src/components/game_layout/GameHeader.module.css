@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    background-color: green; 
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.modalInfo{
+    text-align: center;
+}
+.options{
+    margin-right: 10px;
+}
