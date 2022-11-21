@@ -116,9 +116,11 @@ const Custom = (props) => {
     } else if (
       maxBodova == 0 &&
       +maxBodova + event.target.value - enteredFiz < 0
-    ) {
+    )
+    {
       setFiz(event.target.value);
-    } else {
+    } 
+    else {
       alert(error);
     }
   };
@@ -132,6 +134,15 @@ const Custom = (props) => {
     e.preventDefault();
     if (maxBodova > 0) {
       alert(`Imaš još ${maxBodova} na raspolaganju!`);
+      return;
+    }
+    else if (maxBodova < 0) {
+      alert('Nema varanja!')
+      setInt(1);
+      setFiz(1);
+      setMot(1);
+      setPsi(1);
+      return;
     }
     if (enteredName.trim() == 0) {
       alert("Unesi ime!");
@@ -144,6 +155,7 @@ const Custom = (props) => {
         enteredPsi
       );
       props.start();
+      return;
     }
   };
 
