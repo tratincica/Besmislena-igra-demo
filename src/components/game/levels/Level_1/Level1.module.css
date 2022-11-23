@@ -1,0 +1,25 @@
+.container {
+  text-align: center;
+}
+.uvod{
+    height: 600px;
+}
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+.first{
+    height: 900px;
+}
+
+.Form{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.FormContainer{
+    display: flex;
+    justify-content: center;
+}

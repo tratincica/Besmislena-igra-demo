@@ -1,6 +1,7 @@
 import GameFooter from "../game_layout/GaameFooter";
 import GameHeader from "../game_layout/GameHeader";
 import classes from "./Game.module.css";
+import Level1 from "./levels/Level_1/Level1";
 
 const Game = (props) => {
   return (
@@ -9,7 +10,7 @@ const Game = (props) => {
         <GameHeader />
       </div>
       <div>
-        <h1>Igra!</h1>
+        <Level1 />
       </div>
       <div>
         <GameFooter />
