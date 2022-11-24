@@ -3,6 +3,7 @@ import CharacterContext from "../../../../store/charactere-context";
 import classes from "./Level1.module.css";
 import logo from "../../../../assets/images/logo.PNG";
 import Button from "react-bootstrap/Button";
+import Rezultat from '../../Rezultat'
 
 const Level1 = (props) => {
   const character = useContext(CharacterContext);
@@ -10,6 +11,8 @@ const Level1 = (props) => {
   const [showUvod, setShowUvod] = useState(true);
   const [showFirst, setShowFirst] = useState(false);
   const [prviOdabir, setPrviOdabir] = useState("");
+  const [showRezultat1, setShowRezultat1] = useState(false);
+  const [rezultatOpcija, setRezultatOpcija] = useState("");
 
   function onPrviOdabir(event) {
     setPrviOdabir(event.target.value);
@@ -17,13 +20,48 @@ const Level1 = (props) => {
 
   function onPrviOdabirHander(event) {
     event.preventDefault();
-    console.log(prviOdabir);
+    setShowFirst(false);
+    showRezultat(props.rezultat(prviOdabir));
+    setShowRezultat1(true);
   }
 
   const uvodHandler = (e) => {
     e.preventDefault();
     setShowUvod(false);
     setShowFirst(true);
+    setShowRezultat1(true);
+  };
+
+
+  const showRezultat = rezultat => {
+    switch (rezultat) {
+        case "INTA":
+            setRezultatOpcija(<p>Odložio si gitaru i otišao po piće za bend. Na žalost, čim si ti otišao Medjved se posvadio sa Snjeguljicom i usmrtio ju </p>);
+            break;
+        case "INTB":
+            setRezultatOpcija(<p>Pokušao si odložiti gitaru, ali ona je skliznula i pala na pod te se razbila. Toliko si se naljudio da ti se Medvjed počeo smijati. Odgurnuo si ga u ljutnji ali on te ošamario i tada se cijala grupa potukla. Rezultat je smrt Snjeguljice u toj gunguli.</p>);
+            break;
+        case "MOTA":
+            setRezultatOpcija(<p>Nastavio si svirati "Yohny be good" i medjved je prihvatio te ste svi zajedno nastavili svirati još nekoliko sati u ekstazi</p>);
+            break;
+        case "MOTB":
+            setRezultatOpcija(<p>Zasvirao si "Krist jednom stade na žalu" i naljutio Medvjeda koji je skočio na tebe. Snjeguljica ga je pokušala udariti, no on je na to poludio i udavio ju.</p>);
+            break;
+        case "PSIA":
+            setRezultatOpcija(<p>Medvjed: Jako sam tužan, možda je najbolje da stanemo za danas</p>);
+            break;
+        case "PSIB":
+            setRezultatOpcija(<p>Medjved: Zato što mrzim Snjeguljicu! Medvjed se baci na Snjeguljicu i usmrti je</p>);
+            break;
+        case "FIZA":
+            setRezultatOpcija(<p>Uspio si Medvjeda nokautirati. Na žalost, medvjed je preminuo i sada igra nema smisla</p>);
+            break;
+        case "FIZB":
+            setRezultatOpcija(<p>Nisi uspio medjveda ozljediti. Naljutio si ga i on ti je otrgnuo gitaru, no i ti se izmaknuo pa je gitara pronašla novu metu: Snjeguljicu. Snjeguljica je preminula</p>);
+            break;
+        default:
+            break;
+    };
   };
 
   return (
@@ -116,19 +154,19 @@ const Level1 = (props) => {
             >
               <p>Tvoj odgovor:</p>
               <label>
-                <input type="radio" id="FIZ1" name="prvi odabri" value="FIZ1" />
+                <input type="radio" id="FIZ" name="prvi odabri" value="FIZ" />
                 <span> Razbij gitaru medvjedu o glavu! </span>
               </label>
               <label>
-                <input type="radio" id="MOT1" name="prvi odabri" value="MOT1" />
+                <input type="radio" id="MOT" name="prvi odabri" value="MOT" />
                 <span> Nastavi svirati </span>
               </label>
               <label>
-                <input type="radio" id="INT1" name="prvi odabri" value="INT1" />
+                <input type="radio" id="INT" name="prvi odabri" value="INT" />
                 <span> Odloži gitaru! </span>
               </label>
               <label>
-                <input type="radio" id="PSI1" name="prvi odabri" value="PSI1" />
+                <input type="radio" id="PSI" name="prvi odabri" value="PSI" />
                 <span> Upitaj Medjveda "Zašto si nervozan?"</span>
               </label>
               <div>
@@ -140,8 +178,9 @@ const Level1 = (props) => {
           </div>
         </div>
       )}
-    </div>
-  );
+      {showRezultat1 && <Rezultat opcija={rezultatOpcija} />}
+      </div>
+  )
 };
 
 export default Level1;
