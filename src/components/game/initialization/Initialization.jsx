@@ -283,6 +283,10 @@ const Initialization = (props) => {
       mot: Mot,
       psi: Psi,
       fiz: Fiz,
+      lvl: 1,
+      prog: 0,
+      time: "00:00",
+      chapter: 1
     };
     props.stvoriLika(lik);
   };

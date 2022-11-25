@@ -57,7 +57,7 @@ const Level1 = (props) => {
             setRezultatOpcija(<p>Uspio si Medvjeda nokautirati. Na žalost, medvjed je preminuo i sada igra nema smisla</p>);
             break;
         case "FIZB":
-            setRezultatOpcija(<p>Nisi uspio medjveda ozljediti. Naljutio si ga i on ti je otrgnuo gitaru, no i ti se izmaknuo pa je gitara pronašla novu metu: Snjeguljicu. Snjeguljica je preminula</p>);
+            setRezultatOpcija(<p>Nisi uspio Medvjeda ozljediti. Naljutio si ga i on ti je otrgnuo gitaru, no i ti se izmaknuo pa je gitara pronašla novu metu: Snjeguljicu. Snjeguljica je preminula</p>);
             break;
         default:
             break;
@@ -178,7 +178,7 @@ const Level1 = (props) => {
           </div>
         </div>
       )}
-      {showRezultat1 && <Rezultat opcija={rezultatOpcija} />}
+      {showRezultat1 && <Rezultat opcija={rezultatOpcija} end={props.end}/>}
       </div>
   )
 };

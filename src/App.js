@@ -15,6 +15,54 @@ function App() {
     setGame(true);
   };
 
+  const updateProg = (newProg) => {
+    setLik((prevLik) => {
+      return {
+        name: prevLik.name,
+        int: prevLik.int,
+        mot: prevLik.mot,
+        psi: prevLik.psi,
+        fiz: prevLik.fiz,
+        lvl: prevLik.lvl,
+        prog: prevLik.prog + newProg,
+        time: prevLik.time,
+        chapter: prevLik.chapter,
+      };
+    });
+  };
+
+  const updateTime = (newTime) => {
+    setLik((prevLik) => {
+      return {
+        name: prevLik.name,
+        int: prevLik.int,
+        mot: prevLik.mot,
+        psi: prevLik.psi,
+        fiz: prevLik.fiz,
+        lvl: prevLik.lvl,
+        prog: prevLik.prog,
+        time: newTime,
+        chapter: prevLik.chapter,
+      };
+    });
+  };
+
+  const updateChapter = (newChapter) => {
+    setLik((prevLik) => {
+      return {
+        name: prevLik.name,
+        int: prevLik.int,
+        mot: prevLik.mot,
+        psi: prevLik.psi,
+        fiz: prevLik.fiz,
+        lvl: prevLik.lvl,
+        prog: prevLik.prog,
+        time: prevLik.time,
+        chapter: newChapter,
+      };
+    });
+  };
+
   const createCharacter = (character) => {
     setLik(character);
   };
@@ -23,10 +71,12 @@ function App() {
     <>
       <Header />
 
-      {firstTime && <Initialization show={setInit} stvoriLika={createCharacter} />}
+      {firstTime && (
+        <Initialization show={setInit} stvoriLika={createCharacter} />
+      )}
       {game && (
         <CharacterContext.Provider value={lik}>
-          <Game />
+          <Game uProg={updateProg} uChapter={updateChapter} uTime={updateTime}/>
         </CharacterContext.Provider>
       )}
       <Footer />

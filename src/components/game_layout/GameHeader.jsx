@@ -23,10 +23,10 @@ const GameHeader = (props) => {
           </Modal.Header>
           <Modal.Body className={classes.modalInfo}>
             <p>
-              <b>Level 1</b>
+              <b>Level {character.lvl}</b>
             </p>
             <p>
-              <i>0 Exp</i>
+              <i>{character.prog} / 100 Exp</i>
             </p>
             <p>Inteligencija: {character.int} </p>
             <p>Motorika: {character.mot}</p>
@@ -40,8 +40,8 @@ const GameHeader = (props) => {
           </Modal.Footer>
         </Modal>
       </div>
-      <div className={classes.options}> Chapter 1 </div>
-      <div className={classes.options}> 00:00 H </div>
+      <div className={classes.options}> Chapter {character.chapter} </div>
+      <div className={classes.options}> {character.time} H </div>
     </div>
   );
 };
