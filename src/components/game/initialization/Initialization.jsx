@@ -285,7 +285,7 @@ const Initialization = (props) => {
       fiz: Fiz,
       lvl: 1,
       prog: 0,
-      time: "00:00",
+      time: 0,
       chapter: 1
     };
     props.stvoriLika(lik);

@@ -5,11 +5,18 @@ import Level1 from "./levels/Level_1/Level1";
 import CharacterContext from "../../store/charactere-context";
 import { useContext, useEffect, useState } from "react";
 import Home from './Home';
+import End from "./End";
 
 const Game = (props) => {
   const character = useContext(CharacterContext);
   const [showLevel1, setShowLevel1] = useState(true);
   const [showHome, setShowHome] = useState(false);
+  const [showEnd, setShowEnd] = useState(false);
+
+  const finale = () => {
+    setShowHome(false);
+    setShowEnd(true);
+  }
 
   const hideLevel1 = () => {
     setShowLevel1(false);
@@ -21,7 +28,7 @@ const Game = (props) => {
   };
 
   const izračunRezultata = (odabir) => {
-    props.uTime("01:00");
+    props.uTime(1);
     let rezultat;
     switch (odabir) {
       case "FIZ":
@@ -77,7 +84,10 @@ const Game = (props) => {
         {showLevel1 && (
           <Level1 rezultat={izračunRezultata} end={hideLevel1}  />
         )}
-        {showHome && <Home />}
+        {showHome && <Home kocka={bacanjeKocke} uProg={props.uProg} uTime={props.uTime} fin={finale}/>}
+      </div>
+      <div>
+        {showEnd && <End />}
       </div>
       <div>
         <GameFooter />

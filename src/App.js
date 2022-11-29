@@ -33,6 +33,9 @@ function App() {
 
   const updateTime = (newTime) => {
     setLik((prevLik) => {
+      if (prevLik.time + newTime >= 6){
+        alert("Prošlo je 6 sati, vampir si koji živi u dvorcu bez prozora, ali isto je malo pre kasno pa možda da nazoveš Vuka.");
+      }
       return {
         name: prevLik.name,
         int: prevLik.int,
@@ -41,7 +44,7 @@ function App() {
         fiz: prevLik.fiz,
         lvl: prevLik.lvl,
         prog: prevLik.prog,
-        time: newTime,
+        time: newTime + prevLik.time,
         chapter: prevLik.chapter,
       };
     });
