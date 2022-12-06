@@ -1,73 +1,76 @@
 # Besmislena-Igra-Demo
 React practice project. Game based on my first novel Besmišlje
+You need to have Node.js installed.
+Game is written in Croatian lagnuage.
 
-# IDEJA
+Download the code and run npm install.
 
-Priča igre se bazira na mom romanu Besmišlje. To je RPG koji ima malenu mehaniku nekih drugih RPG-ova kao Disco Elysium i D&D . Sama igra se bazira na chose your own adventure tipu igara koja je story driven i ishodi se često baziraju na bacanju kocke i provjere raznih statusa koje lik ima.
+# IDEA
 
-Ovo je jako jednostavna igra i izvedba, ali ovo je moj prvi samostalni projekt kojim vježbam Front End vještine koristeći React.js .
-Kako se budem razvijao tako ću dorađivati igru, prvo ću je migrirati na Angular, a kasnije dodati i Back End i td. Svaki komentar je dobro došao.
+Story is based on short unpublished novel Besmišlje. The React game has small mechanics simmilar to D&D and Disco Elysium. It is a choose you own adventure kind project, story driven and results are based on combination of dice role and player stats.
 
-# ŠTO?
+This is a very simple game and code, but it is my first standalone project. The main goal is to practice Front End development using React.js. In future I will probably build more advanced game.
 
-## NACRT
+# WHAT?
+
+## BLUEPRINT
 
 1.	Character Selection => Lino, Tomažina, Custom 
-2.	Level 1 => Prati prvo poglavlje romana „Loša sudbina“. Igraču se prezentira priča. Postavljena je situacija u kojoj može birati što učiniti. Na temelju odabira i izračuna ishoda (kockice + statusi) dolazi nova priča i nakon toga situacija. Nakon što se sve odabere završava level s rezultatskom pričom
-3.	Home => Ima neko vrijeme koje treba proći prije sljedećeg levela i na Home se može raditi određene stvari ovisno o odabranom liku. Svaki odabir akcije umanjuje određeno vrijeme koje je ostalo slobodno. Odabrane radnje mogu podignuti statuse lika ili ih smanjiti. U kakvoj nadogradnji ću dodati više opcija i nove levele iza
+2.	Level 1 => First chapter of novel Besmišlje. There is question asked to player after reading the scene, and depending on choices (dice roll and stats) scenario is loaded. In DEMO there is only one scenario after question.
+3.	Home => After Level 1 Home screen is presented where player can decide to make some of the choices which will advance the game and player level progress
+4.  End => Game end and final result in DEMO mode
 
-## LIKOVI
+## CHARACTERS
 
 1.	Lino
 2.	Tomažina
 3.	Custom
 
-U demo verziji je samo moguće Custom a ostali nisu mogući (trenutno ne postoje). 
+In DEMO version you can select between Lino and Custom. 
 
 ### CUSTOM
 
-Kreira se lik s definiranim pullom bodova koji su na raspolaganju igraču. U demo verziji lik može biti samo muškarac s putanjom priče A i posebna vještinom gitara
+Playar can use 8 status points for all skills (max 6 points for skill)
 
 ### Lino
 
-Muški lik s posebnom vještinom gitarom. Putanja priče A.
+Male character. Vampire. Default stats and story arc A.
 
 ### Tomažina
 
-Ženski lik s posebnom vještinom klavirom. Putanja priče B.
+Female character. Humand then vampire. Default stats and story arc B.
 
-# KAKO?
+# HOW?
 
-## TEHNOLOGIJA
+## TEHCNOLOGY
 
-Za ovaj projekt koristim React i react-bootstrap. Glavni koncepi za vježbu iz Reacta koje ću  koristiti su:
-1. Komponente
+For this project I'm using React.js and javascript. Main concepts of React in DEMO version:
+1. Components
 2. Props
 3. State
-4. Hookovi (useEffect i useState)
+4. Hooks (useEffect, useState and useContext)
 5. Context API
 
-U budućnosti planiram implementirati i sljedeće:
+In future I plan to implement:
 1. Redux
 2. React Router
-3. Više hookova
+3. More Hooks
 4. TypeScript
+5. BackEnd (probably Java with Spring)
+6. Remake to Angular
 
-## STRUKTURA
+## STRUCTURE
 
-Kako je ovaj projekt single page tako će se koristiti uvjetovano iscrtavanje više komponenti.
-Sljedeće komponente se koriste:
-1. App.jsx => Vršna komponenta u kojoj se pozivaju sve ostale
-2. Character => prva komponenta koja se pokazuje i vodi do sljedećih komponenti
-3. Level 1 => Prvi level koji se sastoji od više komponenti
-4. Home => Komponenta koja dolazi nakon Level komponenti 
-5. Fin => Završna komponenta koja predstavlja kraj DEMO verzije i ispisuje rezultat igrača
+This project is single page and will use conditioned rendering of more components.
+I have created this components (I will list only the main components):
+1. App.jsx => Main component which reneders all other components
+2. Layout components => headeer and footer of the game
+3. Game.jsx => Main game component with multiple subcomponents including layout, level1, initialization (character selection and other initialization stuff), Home component, End game component
 
-## LIKOVI
+## CHARACTERS
 
-Statusi su (po ugledu na Disco Elysium): 
-1. Intelekt
-2. Psiha
-3. Fizikalnost
-4. Motorika
-5. Posebna vještina
+Stats (inspired by Disco Elysium): 
+1. Intelekt (Intelect)
+2. Psiha (Psyche)
+3. Fizikalnost (Phisicality)
+4. Motorika (Motorics)
