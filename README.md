@@ -42,7 +42,7 @@ Female character. Humand then vampire. Default stats and story arc B.
 
 # HOW?
 
-## TEHCNOLOGY
+## TECHNOLOGY
 
 For this project I'm using React.js and javascript. Main concepts of React in DEMO version:
 1. Components
