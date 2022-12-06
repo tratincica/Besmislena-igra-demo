@@ -1,6 +1,8 @@
 # Besmislena-Igra-Demo
 React practice project. Game based on my first novel Besmišlje
+
 You need to have Node.js installed.
+
 Game is written in Croatian lagnuage.
 
 Download the code and run npm install.
