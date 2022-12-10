@@ -5,7 +5,7 @@ You need to have Node.js installed.
 
 Game is written in Croatian lagnuage.
 
-Download the code and run npm install.
+Download the code and run npm install (you need to have latest Node.js installed).
 
 # IDEA
 
